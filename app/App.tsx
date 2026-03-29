@@ -3,9 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './src/navigation/types';
 
-// 占位页面，后续任务中实现
 import { View, Text, StyleSheet } from 'react-native';
+import CharacterListScreen from './src/screens/CharacterListScreen';
 
+// 占位页面，后续任务中实现
 function PlaceholderScreen() {
   return (
     <View style={styles.container}>
@@ -22,7 +23,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="CharacterList">
         <Stack.Screen
           name="CharacterList"
-          component={PlaceholderScreen}
+          component={CharacterListScreen}
           options={{ title: '人物列表' }}
         />
         <Stack.Screen
