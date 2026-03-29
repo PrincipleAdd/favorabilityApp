@@ -5,6 +5,7 @@ import { RootStackParamList } from './src/navigation/types';
 
 import { View, Text, StyleSheet } from 'react-native';
 import CharacterListScreen from './src/screens/CharacterListScreen';
+import CharacterCreateScreen from './src/screens/CharacterCreateScreen';
 
 // 占位页面，后续任务中实现
 function PlaceholderScreen() {
@@ -28,7 +29,7 @@ export default function App() {
         />
         <Stack.Screen
           name="CharacterCreate"
-          component={PlaceholderScreen}
+          component={CharacterCreateScreen}
           options={{ title: '创建人物' }}
         />
         <Stack.Screen
