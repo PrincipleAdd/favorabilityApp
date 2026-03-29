@@ -13,6 +13,7 @@ import type { RouteProp } from '@react-navigation/native';
 import type { RootStackParamList } from '../navigation/types';
 import { useCharacterStore } from '../store/characterStore';
 import AffinityControl from '../components/AffinityControl';
+import EventList from '../components/EventList';
 
 type DetailNavigationProp = NativeStackNavigationProp<RootStackParamList, 'CharacterDetail'>;
 type DetailRouteProp = RouteProp<RootStackParamList, 'CharacterDetail'>;
@@ -137,14 +138,14 @@ export default function CharacterDetailScreen() {
         </View>
       </View>
 
-      {/* 好感度事件历史列表（占位符） */}
+      {/* 好感度事件历史列表 */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>好感度事件</Text>
-        <View style={styles.eventsPlaceholder}>
-          <Text style={styles.placeholderText}>
-            事件列表组件（EventList）将在后续任务中实现
-          </Text>
-        </View>
+        <EventList
+          events={events}
+          error={error}
+          onRetry={() => fetchEvents(characterId)}
+        />
       </View>
     </ScrollView>
   );
@@ -225,19 +226,5 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: 12,
   },
-  eventsPlaceholder: {
-    backgroundColor: '#FFFFFF',
-    marginHorizontal: 16,
-    borderRadius: 12,
-    padding: 24,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#E5E5EA',
-    borderStyle: 'dashed',
-  },
-  placeholderText: {
-    fontSize: 13,
-    color: '#C7C7CC',
-    textAlign: 'center',
-  },
+
 });
