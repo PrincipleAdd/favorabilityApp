@@ -12,6 +12,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 import type { RootStackParamList } from '../navigation/types';
 import { useCharacterStore } from '../store/characterStore';
+import AffinityControl from '../components/AffinityControl';
 
 type DetailNavigationProp = NativeStackNavigationProp<RootStackParamList, 'CharacterDetail'>;
 type DetailRouteProp = RouteProp<RootStackParamList, 'CharacterDetail'>;
@@ -132,11 +133,7 @@ export default function CharacterDetailScreen() {
           >
             {affinityDisplay}
           </Text>
-          <View style={styles.affinityPlaceholder}>
-            <Text style={styles.placeholderText}>
-              好感度控制组件（AffinityControl）将在后续任务中实现
-            </Text>
-          </View>
+          <AffinityControl characterId={characterId} />
         </View>
       </View>
 
@@ -227,15 +224,6 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: '800',
     marginBottom: 12,
-  },
-  affinityPlaceholder: {
-    borderWidth: 1,
-    borderColor: '#E5E5EA',
-    borderStyle: 'dashed',
-    borderRadius: 8,
-    padding: 16,
-    width: '100%',
-    alignItems: 'center',
   },
   eventsPlaceholder: {
     backgroundColor: '#FFFFFF',
