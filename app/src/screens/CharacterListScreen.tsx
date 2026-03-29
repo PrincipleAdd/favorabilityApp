@@ -77,12 +77,22 @@ function EmptyList({ onCreatePress }: { onCreatePress: () => void }) {
 /** 人物列表页 */
 export default function CharacterListScreen() {
   const navigation = useNavigation<NavigationProp>();
-  const { characters, loading, fetchCharacters, deleteCharacter } =
+  const { characters, loading, error, fetchCharacters, deleteCharacter, clearError } =
     useCharacterStore();
 
   useEffect(() => {
     fetchCharacters();
   }, [fetchCharacters]);
+
+  // 网络异常时显示提示信息
+  useEffect(() => {
+    if (error) {
+      Alert.alert('加载失败', error, [
+        { text: '重试', onPress: () => { clearError(); fetchCharacters(); } },
+        { text: '关闭', style: 'cancel', onPress: clearError },
+      ]);
+    }
+  }, [error, clearError, fetchCharacters]);
 
   const handleRefresh = useCallback(() => {
     fetchCharacters();
