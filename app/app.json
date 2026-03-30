@@ -5,14 +5,28 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "affinity-manager",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.affinitymanager.app",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       }
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "86435a06-7dd3-4168-8013-0b519c591eaf"
+      }
+    },
+    "owner": "principleadd",
+    "plugins": [
+      "expo-asset",
+      "expo-font"
+    ]
   }
 }
