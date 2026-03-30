@@ -63,7 +63,7 @@ export function createCharacter(req: Request, res: Response): void {
  * GET /api/characters/:id - 获取人物详情
  */
 export function getCharacter(req: Request, res: Response): void {
-  const character = characterService.getCharacterById(req.params.id);
+  const character = characterService.getCharacterById(req.params.id as string);
   if (!character) {
     res.status(404).json({ error: '人物不存在' });
     return;
@@ -82,7 +82,7 @@ export function updateCharacter(req: Request, res: Response): void {
   }
 
   try {
-    const character = characterService.updateCharacter(req.params.id, parsed.data);
+    const character = characterService.updateCharacter(req.params.id as string, parsed.data);
     res.json(character);
   } catch (err) {
     handleServiceError(err, res);
@@ -94,7 +94,7 @@ export function updateCharacter(req: Request, res: Response): void {
  */
 export function deleteCharacter(req: Request, res: Response): void {
   try {
-    characterService.deleteCharacter(req.params.id);
+    characterService.deleteCharacter(req.params.id as string);
     res.status(204).send();
   } catch (err) {
     handleServiceError(err, res);

@@ -112,9 +112,9 @@ export function getAffinityEvents(characterId: string): AffinityEvent[] {
   }
 
   const columns = results[0].columns;
-  return results[0].values.map((row) => {
+  return results[0].values.map((row: (string | number | null | Uint8Array)[]) => {
     const obj: Record<string, unknown> = {};
-    columns.forEach((col, i) => {
+    columns.forEach((col: string, i: number) => {
       obj[col] = row[i];
     });
     return rowToAffinityEvent(obj);

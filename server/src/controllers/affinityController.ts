@@ -39,7 +39,7 @@ export function adjustAffinity(req: Request, res: Response): void {
   }
 
   try {
-    const result = affinityService.adjustAffinity(req.params.id, parsed.data);
+    const result = affinityService.adjustAffinity(req.params.id as string, parsed.data);
     res.json(result);
   } catch (err) {
     handleServiceError(err, res);
@@ -51,7 +51,7 @@ export function adjustAffinity(req: Request, res: Response): void {
  */
 export function getAffinityEvents(req: Request, res: Response): void {
   try {
-    const events = affinityService.getAffinityEvents(req.params.id);
+    const events = affinityService.getAffinityEvents(req.params.id as string);
     res.json(events);
   } catch (err) {
     handleServiceError(err, res);

@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "tencent-cloud-ssh": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@fangjunjie/ssh-mcp-server",
+        "--host",
+        "159.75.26.219",
+        "--port",
+        "22",
+        "--username",
+        "ubuntu",
+        "--privateKey",
+        "e:\\一脸决心\\牛马人生\\2026\\cloudServer\\wanqu.pem"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "execute-command",
+        "list-servers",
+        "upload",
+        "upload"
+      ]
+    }
+  }
+}
