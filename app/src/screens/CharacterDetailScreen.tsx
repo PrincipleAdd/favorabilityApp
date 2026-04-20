@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import {
   View,
   Text,
+  Image,
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
@@ -111,11 +112,15 @@ export default function CharacterDetailScreen() {
     <ScrollView style={styles.container}>
       {/* 人物信息区域 */}
       <View style={styles.profileSection}>
-        <View style={styles.avatarLarge}>
-          <Text style={styles.avatarLargeText}>
-            {getInitial(currentCharacter.name)}
-          </Text>
-        </View>
+        {currentCharacter.avatar ? (
+          <Image source={{ uri: currentCharacter.avatar }} style={styles.avatarLargeImage} />
+        ) : (
+          <View style={styles.avatarLarge}>
+            <Text style={styles.avatarLargeText}>
+              {getInitial(currentCharacter.name)}
+            </Text>
+          </View>
+        )}
         <Text style={styles.characterName}>{currentCharacter.name}</Text>
         {currentCharacter.note ? (
           <Text style={styles.characterNote}>{currentCharacter.note}</Text>
@@ -190,6 +195,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 32,
     fontWeight: '600',
+  },
+  avatarLargeImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginBottom: 12,
   },
   characterName: {
     fontSize: 22,

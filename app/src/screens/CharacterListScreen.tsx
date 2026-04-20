@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import {
   View,
   Text,
+  Image,
   FlatList,
   TouchableOpacity,
   Alert,
@@ -45,9 +46,13 @@ function CharacterItem({
       onLongPress={onLongPress}
       activeOpacity={0.7}
     >
-      <View style={styles.avatar}>
-        <Text style={styles.avatarText}>{getInitial(character.name)}</Text>
-      </View>
+      {character.avatar ? (
+        <Image source={{ uri: character.avatar }} style={styles.avatarImage} />
+      ) : (
+        <View style={styles.avatar}>
+          <Text style={styles.avatarText}>{getInitial(character.name)}</Text>
+        </View>
+      )}
       <Text style={styles.name} numberOfLines={1}>
         {character.name}
       </Text>
@@ -195,6 +200,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: '600',
+  },
+  avatarImage: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    marginRight: 12,
   },
   name: {
     flex: 1,

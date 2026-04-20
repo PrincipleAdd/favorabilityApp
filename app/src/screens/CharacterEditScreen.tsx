@@ -16,6 +16,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 import type { RootStackParamList } from '../navigation/types';
 import { useCharacterStore } from '../store/characterStore';
+import AvatarPicker from '../components/AvatarPicker';
 import * as api from '../api/client';
 
 type EditNavigationProp = NativeStackNavigationProp<RootStackParamList, 'CharacterEdit'>;
@@ -125,16 +126,9 @@ export default function CharacterEditScreen() {
         />
         {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
 
-        {/* 头像 URL */}
-        <Text style={styles.label}>头像 URL</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="选填，输入头像图片地址"
-          value={avatar}
-          onChangeText={setAvatar}
-          autoCapitalize="none"
-          keyboardType="url"
-        />
+        {/* 头像 */}
+        <Text style={styles.label}>头像</Text>
+        <AvatarPicker uri={avatar} name={name} onPick={setAvatar} />
 
         {/* 备注 */}
         <Text style={styles.label}>备注</Text>
