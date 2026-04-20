@@ -38,7 +38,7 @@ export function createCharacter(req: CreateCharacterRequest): Character {
   const id = uuidv4();
 
   db.run(
-    'INSERT INTO characters (id, name, avatar, note, affinity) VALUES (?, ?, ?, ?, 0)',
+    'INSERT INTO characters (id, name, avatar, note, affinity) VALUES (?, ?, ?, ?, 60)',
     [id, req.name.trim(), req.avatar ?? null, req.note ?? null]
   );
 

@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS characters (
     name TEXT NOT NULL,
     avatar TEXT,
     note TEXT,
-    affinity INTEGER NOT NULL DEFAULT 0 CHECK(affinity >= -100 AND affinity <= 100),
+    affinity INTEGER NOT NULL DEFAULT 60 CHECK(affinity >= -100 AND affinity <= 100),
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

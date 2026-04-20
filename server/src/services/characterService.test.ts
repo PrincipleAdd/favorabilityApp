@@ -23,7 +23,7 @@ describe('characterService', () => {
     it('应创建人物并返回完整记录，好感度初始为 0', () => {
       const character = createCharacter({ name: '张三' });
       expect(character.name).toBe('张三');
-      expect(character.affinity).toBe(0);
+      expect(character.affinity).toBe(60);
       expect(character.id).toBeDefined();
       expect(character.createdAt).toBeDefined();
     });

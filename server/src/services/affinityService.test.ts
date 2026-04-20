@@ -46,9 +46,9 @@ describe('affinityService', () => {
       const result = adjustAffinity(character.id, { delta: 10, reason: '帮了忙' });
 
       expect(result.characterId).toBe(character.id);
-      expect(result.affinity).toBe(10);
+      expect(result.affinity).toBe(70);
       expect(result.event.delta).toBe(10);
-      expect(result.event.affinityAfter).toBe(10);
+      expect(result.event.affinityAfter).toBe(70);
       expect(result.event.reason).toBe('帮了忙');
       expect(result.event.id).toBeDefined();
       expect(result.event.createdAt).toBeDefined();
@@ -57,7 +57,7 @@ describe('affinityService', () => {
     it('应支持负数 delta', () => {
       const character = createCharacter({ name: '测试' });
       const result = adjustAffinity(character.id, { delta: -5 });
-      expect(result.affinity).toBe(-5);
+      expect(result.affinity).toBe(55);
       expect(result.event.delta).toBe(-5);
     });
 

@@ -51,7 +51,7 @@ describe('characterController', () => {
       expect(res.statusCode).toBe(201);
       expect(res._body).toMatchObject({
         name: '张三',
-        affinity: 0,
+        affinity: 60,
       });
     });
 

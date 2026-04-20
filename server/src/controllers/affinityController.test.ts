@@ -61,8 +61,8 @@ describe('affinityController', () => {
       expect(res.statusCode).toBe(200);
       expect(res._body).toMatchObject({
         characterId: id,
-        affinity: 1,
-        event: { delta: 1, affinityAfter: 1 },
+        affinity: 61,
+        event: { delta: 1, affinityAfter: 61 },
       });
     });
 
@@ -76,8 +76,8 @@ describe('affinityController', () => {
       expect(res.statusCode).toBe(200);
       expect(res._body).toMatchObject({
         characterId: id,
-        affinity: -1,
-        event: { delta: -1, affinityAfter: -1 },
+        affinity: 59,
+        event: { delta: -1, affinityAfter: 59 },
       });
     });
 
@@ -90,8 +90,8 @@ describe('affinityController', () => {
 
       expect(res.statusCode).toBe(200);
       expect(res._body).toMatchObject({
-        affinity: 50,
-        event: { delta: 50, affinityAfter: 50, reason: '帮了大忙' },
+        affinity: 100,
+        event: { delta: 50, affinityAfter: 100, reason: '帮了大忙' },
       });
     });
 
@@ -166,13 +166,13 @@ describe('affinityController', () => {
 
     it('好感度应被钳制在 -100 以内', () => {
       const id = createTestCharacter();
-      // 先减到 -100
+      // 先减到 -40（初始 60 - 100）
       const req1 = mockRequest({ params: { id }, body: { delta: -100 } });
       const res1 = mockResponse();
       affinityController.adjustAffinity(req1, res1);
 
-      // 再减 1，应被钳制在 -100
-      const req2 = mockRequest({ params: { id }, body: { delta: -1 } });
+      // 再减 100，应被钳制在 -100
+      const req2 = mockRequest({ params: { id }, body: { delta: -100 } });
       const res2 = mockResponse();
       affinityController.adjustAffinity(req2, res2);
 
