@@ -82,7 +82,7 @@ function EmptyList({ onCreatePress }: { onCreatePress: () => void }) {
 /** 人物列表页 */
 export default function CharacterListScreen() {
   const navigation = useNavigation<NavigationProp>();
-  const { characters, loading, error, fetchCharacters, deleteCharacter, clearError } =
+  const { characters, loading, error, offline, pendingSync, fetchCharacters, deleteCharacter, clearError, syncOfflineData } =
     useCharacterStore();
 
   useEffect(() => {
@@ -151,6 +151,17 @@ export default function CharacterListScreen() {
 
   return (
     <View style={styles.container}>
+      {offline && (
+        <TouchableOpacity
+          style={styles.offlineBanner}
+          onPress={syncOfflineData}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.offlineBannerText}>
+            📡 离线模式{pendingSync > 0 ? ` · ${pendingSync} 条待同步` : ''} · 点击同步
+          </Text>
+        </TouchableOpacity>
+      )}
       <FlatList
         data={characters}
         renderItem={renderItem}
@@ -174,6 +185,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2F2F7',
+  },
+  offlineBanner: {
+    backgroundColor: '#FF9500',
+    paddingVertical: 8,
+    alignItems: 'center',
+  },
+  offlineBannerText: {
+    color: '#FFF',
+    fontSize: 13,
+    fontWeight: '600',
   },
   emptyListContent: {
     flexGrow: 1,
