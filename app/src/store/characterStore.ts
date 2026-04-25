@@ -67,22 +67,26 @@ export const useCharacterStore = create<CharacterState>()((set, get) => ({
 
   fetchCharacters: async () => {
     set({ loading: true, error: null });
-    const online = await isOnline();
-
-    if (online) {
-      // 先尝试同步离线数据
+    
+    // 先尝试从服务器获取
+    try {
       await processSyncQueue();
-      try {
-        const characters = await api.getCharacters();
-        set({ characters, offline: false, pendingSync: 0 });
-        await saveCharactersLocal(characters);
-        return;
-      } catch { /* fall through to local */ }
+      const characters = await api.getCharacters();
+      set({ characters, offline: false, pendingSync: 0, loading: false });
+      await saveCharactersLocal(characters);
+      return;
+    } catch (err) {
+      // 服务器请求失败，尝试从本地加载
+      const local = await loadCharactersLocal();
+      if (local.length > 0) {
+        set({ characters: local, offline: true, loading: false });
+      } else {
+        // 本地也没数据，显示错误
+        const msg = err instanceof Error ? err.message : '网络错误';
+        set({ characters: [], offline: true, loading: false, error: `无法连接服务器: ${msg}` });
+      }
     }
-
-    // 离线或请求失败，从本地加载
-    const local = await loadCharactersLocal();
-    set({ characters: local, offline: true, loading: false });
+  },
   },
 
   createCharacter: async (req: CreateCharacterRequest) => {
