@@ -13,10 +13,10 @@ import type {
 const BASE_URL = 'http://159.75.26.219:3000';
 
 /** 请求超时时间（毫秒） */
-const TIMEOUT_MS = 10000;
+const TIMEOUT_MS = 15000;
 
 /** 最大自动重试次数 */
-const MAX_RETRIES = 2;
+const MAX_RETRIES = 3;
 
 /** 重试间隔（毫秒） */
 const RETRY_DELAY_MS = 1000;

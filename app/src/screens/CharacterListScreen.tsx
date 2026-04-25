@@ -177,7 +177,7 @@ export default function CharacterListScreen() {
       <TouchableOpacity style={styles.fab} onPress={handleCreatePress}>
         <Text style={styles.fabText}>+</Text>
       </TouchableOpacity>
-      <Text style={styles.versionText}>v1.1.0</Text>
+      <Text style={styles.versionText}>v1.2.0</Text>
     </View>
   );
 }
