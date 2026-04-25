@@ -87,7 +87,6 @@ export const useCharacterStore = create<CharacterState>()((set, get) => ({
       }
     }
   },
-  },
 
   createCharacter: async (req: CreateCharacterRequest) => {
     set({ loading: true, error: null });
