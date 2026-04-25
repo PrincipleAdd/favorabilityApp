@@ -177,6 +177,7 @@ export default function CharacterListScreen() {
       <TouchableOpacity style={styles.fab} onPress={handleCreatePress}>
         <Text style={styles.fabText}>+</Text>
       </TouchableOpacity>
+      <Text style={styles.versionText}>v1.1.0</Text>
     </View>
   );
 }
@@ -293,5 +294,14 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '400',
     lineHeight: 30,
+  },
+  versionText: {
+    position: 'absolute',
+    bottom: 12,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontSize: 11,
+    color: '#C7C7CC',
   },
 });
