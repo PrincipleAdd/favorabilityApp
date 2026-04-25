@@ -9,8 +9,8 @@ import type {
   ErrorResponse,
 } from '../types';
 
-/** 后台服务基础地址，可通过环境变量配置 */
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000';
+/** 后台服务基础地址 */
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://159.75.26.219:3000';
 
 /** 请求超时时间（毫秒） */
 const TIMEOUT_MS = 3000;
