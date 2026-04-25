@@ -10,10 +10,10 @@ import type {
 } from '../types';
 
 /** 后台服务基础地址 */
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://159.75.26.219:3000';
+const BASE_URL = 'http://159.75.26.219:3000';
 
 /** 请求超时时间（毫秒） */
-const TIMEOUT_MS = 3000;
+const TIMEOUT_MS = 10000;
 
 /** 最大自动重试次数 */
 const MAX_RETRIES = 2;

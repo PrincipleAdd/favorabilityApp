@@ -92,7 +92,7 @@ export default function CharacterListScreen() {
   // 网络异常时显示提示信息
   useEffect(() => {
     if (error) {
-      Alert.alert('加载失败', error, [
+      Alert.alert('加载失败', `${error}\n\n服务器: http://159.75.26.219:3000`, [
         { text: '重试', onPress: () => { clearError(); fetchCharacters(); } },
         { text: '关闭', style: 'cancel', onPress: clearError },
       ]);
